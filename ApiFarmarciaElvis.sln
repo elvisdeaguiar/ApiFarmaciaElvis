@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFarmarciaElvis", "ApiFar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFarmaciaElvis.Entidades", "ApiFarmaciaElvis.Entidades\ApiFarmaciaElvis.Entidades.csproj", "{0E3BDAB7-2752-46DD-81F0-41D44E9599C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFarmaciaElvis.Repositorios", "ApiFarmaciaElvis.Repositorios\ApiFarmaciaElvis.Repositorios.csproj", "{C4F1F264-9498-4EAB-AAA7-1C944E433A46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0E3BDAB7-2752-46DD-81F0-41D44E9599C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E3BDAB7-2752-46DD-81F0-41D44E9599C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E3BDAB7-2752-46DD-81F0-41D44E9599C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F1F264-9498-4EAB-AAA7-1C944E433A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F1F264-9498-4EAB-AAA7-1C944E433A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F1F264-9498-4EAB-AAA7-1C944E433A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F1F264-9498-4EAB-AAA7-1C944E433A46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
