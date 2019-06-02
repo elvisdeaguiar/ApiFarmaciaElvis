@@ -17,7 +17,7 @@ namespace ApiFarmaciaElvis.Entidades
         [Required(ErrorMessage = "Última Chance do Produto é obrigatória.")]
         [ForeignKey("ULCH_SQ_PRODUTO")]
         [Display(Name = "Última Chance do Produto")]
-        public UltimaChanceProduto UltimaChanceProduto { get; set; }
+        public virtual UltimaChanceProduto UltimaChanceProduto { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Código de Barras é obrigatório.")]
         [MinLength(1, ErrorMessage = "Código de Barras deve ter pelo menos {0} caracter(es).")]
@@ -57,14 +57,17 @@ namespace ApiFarmaciaElvis.Entidades
             }
         }
 
+        [Required(ErrorMessage = "Data de Venda é obrigatória.")]
         [Column("ULCH_DH_VENDA")]
         [Display(Name = "Data de Venda")]
         public DateTime? DataVenda { get; set; }
 
+        [Required(ErrorMessage = "Menor Preço é obrigatório.")]
         [Column("ULCH_MENOR_PRECO")]
         [Display(Name = "Menor Preço")]
         public decimal? MenorPreco { get; set; }
 
+        [Required(ErrorMessage = "Preço de Venda é obrigatório.")]
         [Column("ULCH_PRECO_VENDA")]
         [Display(Name = "Preço de Venda")]
         public decimal? PrecoVenda { get; set; }
