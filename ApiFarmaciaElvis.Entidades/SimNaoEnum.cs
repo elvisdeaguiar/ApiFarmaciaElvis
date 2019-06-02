@@ -1,7 +1,7 @@
 ﻿namespace ApiFarmaciaElvis.Entidades
 {
-    public enum SimNaoAbreviado
+    public enum SimNaoEnum
     {
-        S, N
+        Nao, Sim
     }
 }
