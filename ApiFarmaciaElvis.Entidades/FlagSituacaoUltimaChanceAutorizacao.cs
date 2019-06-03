@@ -20,7 +20,7 @@ namespace ApiFarmaciaElvis.Entidades
                 case "V":
                     return FlagSituacaoUltimaChanceAutorizacaoEnum.Vencido;
                 default:
-                    throw new ArgumentException("Abreviação desconhecida: " + abreviacao + ".");
+                    throw new ArgumentException("Abreviação de Flag de Situação desconhecida: " + abreviacao + ".");
             }
         }
 

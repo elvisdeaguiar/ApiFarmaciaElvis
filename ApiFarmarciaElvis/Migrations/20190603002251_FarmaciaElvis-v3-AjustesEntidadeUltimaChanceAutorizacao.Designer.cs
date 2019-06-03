@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiFarmarciaElvis.Migrations
 {
     [DbContext(typeof(ApiFarmarciaElvisContext))]
-    [Migration("20190602200520_FarmaciaElvis-v2-AjustesPropriedadesNotNullDaClasseUltimaChanceAutorizacao")]
-    partial class FarmaciaElvisv2AjustesPropriedadesNotNullDaClasseUltimaChanceAutorizacao
+    [Migration("20190603002251_FarmaciaElvis-v3-AjustesEntidadeUltimaChanceAutorizacao")]
+    partial class FarmaciaElvisv3AjustesEntidadeUltimaChanceAutorizacao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,9 +42,17 @@ namespace ApiFarmarciaElvis.Migrations
                         .HasColumnName("ULCH_FL_SITUACAO")
                         .HasMaxLength(1);
 
+                    b.Property<string>("FlagTipoProduto")
+                        .IsRequired()
+                        .HasColumnName("ULCH_FL_TIPO_PRODUTO")
+                        .HasMaxLength(3);
+
                     b.Property<decimal?>("MenorPreco")
                         .IsRequired()
                         .HasColumnName("ULCH_MENOR_PRECO");
+
+                    b.Property<decimal?>("PercentualDesconto")
+                        .HasColumnName("ULCH_PERCENTUAL_DESCONTO");
 
                     b.Property<decimal?>("PrecoVenda")
                         .IsRequired()

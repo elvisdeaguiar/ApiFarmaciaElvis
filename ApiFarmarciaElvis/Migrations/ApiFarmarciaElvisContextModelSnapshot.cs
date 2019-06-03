@@ -40,9 +40,17 @@ namespace ApiFarmarciaElvis.Migrations
                         .HasColumnName("ULCH_FL_SITUACAO")
                         .HasMaxLength(1);
 
+                    b.Property<string>("FlagTipoProduto")
+                        .IsRequired()
+                        .HasColumnName("ULCH_FL_TIPO_PRODUTO")
+                        .HasMaxLength(3);
+
                     b.Property<decimal?>("MenorPreco")
                         .IsRequired()
                         .HasColumnName("ULCH_MENOR_PRECO");
+
+                    b.Property<decimal?>("PercentualDesconto")
+                        .HasColumnName("ULCH_PERCENTUAL_DESCONTO");
 
                     b.Property<decimal?>("PrecoVenda")
                         .IsRequired()

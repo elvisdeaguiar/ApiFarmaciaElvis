@@ -97,7 +97,6 @@ namespace ApiFarmaciaElvis.Entidades
                 "FlagAutorizadoEnum = " + StringUtils.NullWordOrToStringValue(FlagAutorizadoEnum) + ", " +
                 "FlagAutorizado = " + StringUtils.NullWordOrToStringValue(FlagAutorizado) + 
                 " }";
-
         }
     }
 }

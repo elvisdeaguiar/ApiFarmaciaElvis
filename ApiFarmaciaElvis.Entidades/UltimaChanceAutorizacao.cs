@@ -9,6 +9,10 @@ namespace ApiFarmaciaElvis.Entidades
     {
         private FlagSituacaoUltimaChanceAutorizacao flagSituacao = new FlagSituacaoUltimaChanceAutorizacao();
 
+        private decimal? percentualDesconto;
+
+        private FlagTipoProduto flagTipoProduto = new FlagTipoProduto();
+
         [Key]
         [Column("ULCH_SQ_AUTORIZACAO")]
         [Display(Name = "Sequência da Autorização")]
@@ -71,6 +75,34 @@ namespace ApiFarmaciaElvis.Entidades
         [Column("ULCH_PRECO_VENDA")]
         [Display(Name = "Preço de Venda")]
         public decimal? PrecoVenda { get; set; }
+                
+        [Column("ULCH_PERCENTUAL_DESCONTO")]
+        [Display(Name = "Percentual de Desconto")]
+        public decimal? PercentualDesconto { get; set; }
+
+        [NotMapped]
+        public FlagTipoProdutoEnum FlagTipoProdutoEnum
+        {
+            get { return this.flagTipoProduto.FlagTipoProdutoEnum; }
+            set { this.flagTipoProduto.FlagTipoProdutoEnum = value; }
+        }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "Flag de Tipo de Produto deve ter entre 1 e 3 caracteres.")]
+        [Column("ULCH_FL_TIPO_PRODUTO")]
+        [Display(Name = "Tipo de Produto")]
+        public string FlagTipoProduto
+        {
+            get
+            {
+                return this.flagTipoProduto.Abreviacao;
+            }
+
+            set
+            {
+                this.flagTipoProduto.Abreviacao = value;
+            }
+        }
 
         public override bool Equals(object obj)
         {
@@ -100,9 +132,11 @@ namespace ApiFarmaciaElvis.Entidades
                 "FlagSituacao = " + StringUtils.NullWordOrToStringValue(FlagSituacao) + ", " +
                 "DataVenda = " + StringUtils.NullWordOrToStringValue(DataVenda) + ", " +
                 "MenorPreco = " + StringUtils.NullWordOrToStringValue(MenorPreco) + ", " +
-                "PrecoVenda = " + StringUtils.NullWordOrToStringValue(PrecoVenda) + 
+                "PrecoVenda = " + StringUtils.NullWordOrToStringValue(PrecoVenda) + ", " +
+                "PercentualDesconto = " + StringUtils.NullWordOrToStringValue(PercentualDesconto) + ", " +
+                "FlagTipoProdutoEnum = " + StringUtils.NullWordOrToStringValue(FlagTipoProdutoEnum) + ", " +
+                "FlagTipoProduto = " + StringUtils.NullWordOrToStringValue(FlagTipoProduto) + 
                 " }";
-
         }
     }
 }
