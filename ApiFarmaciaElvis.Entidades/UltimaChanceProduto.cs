@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiFarmaciaElvis.Entidades
-{   
+{
+    [Produces("application/json")]
     [Table("ULTIMA_CHANCE_PRODUTO")]
     public class UltimaChanceProduto
     {
@@ -59,6 +62,7 @@ namespace ApiFarmaciaElvis.Entidades
         public DateTime? DataVencimento { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public SimNaoEnum FlagAutorizadoEnum { get { return this.flagAutorizado.SimNaoEnum; } set { this.flagAutorizado.SimNaoEnum = value; } }
 
         [Required(ErrorMessage = "Flag Autorizado é obrigatória.")]

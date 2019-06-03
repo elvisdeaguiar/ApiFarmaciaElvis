@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiFarmaciaElvis.Entidades
 {
+    [Produces("application/json")]
     [Table("ULTIMA_CHANCE_AUTORIZACAO")]
     public class UltimaChanceAutorizacao
     {
@@ -34,7 +37,8 @@ namespace ApiFarmaciaElvis.Entidades
         [Display(Name = "Código de Barras")]
         public string CodigoBarras { get; set; }
 
-        [NotMapped]        
+        [NotMapped]
+        [JsonIgnore]
         public FlagSituacaoUltimaChanceAutorizacaoEnum FlagSituacaoEnum
         {
             get
@@ -64,8 +68,7 @@ namespace ApiFarmaciaElvis.Entidades
                 this.flagSituacao.Abreviacao = value;
             }
         }
-
-        [Required(ErrorMessage = "Data de Venda é obrigatória.")]
+        
         [Column("ULCH_DH_VENDA")]
         [Display(Name = "Data de Venda")]
         public DateTime? DataVenda { get; set; }
@@ -103,7 +106,6 @@ namespace ApiFarmaciaElvis.Entidades
             }
         }
 
-        [Required(ErrorMessage = "Preço de Venda é obrigatório.")]
         [Column("ULCH_PRECO_VENDA")]
         [Display(Name = "Preço de Venda")]
         public decimal? PrecoVenda
@@ -159,6 +161,7 @@ namespace ApiFarmaciaElvis.Entidades
         }
 
         [NotMapped]
+        [JsonIgnore]
         public FlagTipoProdutoEnum FlagTipoProdutoEnum
         {
             get { return this.flagTipoProduto.FlagTipoProdutoEnum; }

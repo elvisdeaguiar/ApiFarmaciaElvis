@@ -25,7 +25,7 @@ namespace ApiFarmarciaElvis
         [HttpGet]
         public IEnumerable<UltimaChanceAutorizacao> GetUltimaChanceAutorizacao()
         {
-            return _context.UltimaChanceAutorizacao;
+            return _context.UltimaChanceAutorizacao.Include(uca => uca.UltimaChanceProduto);
         }
 
         // GET: api/UltimaChanceAutorizacao/5
@@ -37,7 +37,7 @@ namespace ApiFarmarciaElvis
                 return BadRequest(ModelState);
             }
 
-            var ultimaChanceAutorizacao = await _context.UltimaChanceAutorizacao.FindAsync(id);
+            var ultimaChanceAutorizacao = await _context.UltimaChanceAutorizacao.Include(uca => uca.UltimaChanceProduto).FirstOrDefaultAsync(uca => uca.SequenciaAutorizacao == id);
 
             if (ultimaChanceAutorizacao == null)
             {

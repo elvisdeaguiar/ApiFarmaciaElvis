@@ -63,7 +63,7 @@ namespace ApiFarmarciaElvis.Data
                 FlagSituacaoEnum = FlagSituacaoUltimaChanceAutorizacaoEnum.FinalizadoVendido,
                 FlagTipoProdutoEnum = FlagTipoProdutoEnum.Medicamento,
                 MenorPreco = 10.11m,
-                PercentualDesconto = 10m
+                PercentualDesconto = null
             };
 
             var ultimaChanceAutorizacao2 = new UltimaChanceAutorizacao
@@ -74,7 +74,7 @@ namespace ApiFarmarciaElvis.Data
                 FlagSituacaoEnum = FlagSituacaoUltimaChanceAutorizacaoEnum.FinalizadoVendido,
                 FlagTipoProdutoEnum = FlagTipoProdutoEnum.Medicamento,
                 MenorPreco = 10.11m,
-                PercentualDesconto = 10m
+                PercentualDesconto = null
             };
 
             var ultimaChanceAutorizacao3 = new UltimaChanceAutorizacao
@@ -136,7 +136,7 @@ namespace ApiFarmarciaElvis.Data
             {
                 UltimaChanceProduto = ultimaChanceProduto3,
                 CodigoBarras = "8",
-                DataVenda = DateTime.Now.AddDays(1),
+                DataVenda = null,
                 FlagSituacaoEnum = FlagSituacaoUltimaChanceAutorizacaoEnum.Vencido,
                 FlagTipoProdutoEnum = FlagTipoProdutoEnum.NaoMedicamentoAlimento,
                 MenorPreco = 97.48m,
