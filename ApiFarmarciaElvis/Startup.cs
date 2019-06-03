@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using ApiFarmarciaElvis.Repositorios;
 using ApiFarmaciaElvis.Repositorios;
+using ApiFarmarciaElvis.Data;
 
 namespace ApiFarmarciaElvis
 {
@@ -31,10 +32,12 @@ namespace ApiFarmarciaElvis
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<ApiFarmarciaElvisContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString(NOME_CONTEXTO)));
+            var connectionString = Configuration.GetConnectionString(NOME_CONTEXTO);
 
-            services.AddTransient<IReportsService, ReportsService>(isp => new ReportsService(Configuration.GetConnectionString(NOME_CONTEXTO)));
+            services.AddDbContext<ApiFarmarciaElvisContext>(options =>
+                    options.UseSqlServer(connectionString));
+
+            services.AddTransient<IReportsService, ReportsService>(isp => ReportsServiceFactory.Build(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
