@@ -9,6 +9,10 @@ namespace ApiFarmaciaElvis.Entidades
     {
         private FlagSituacaoUltimaChanceAutorizacao flagSituacao = new FlagSituacaoUltimaChanceAutorizacao();
 
+        private decimal? menorPreco;
+
+        private decimal? precoVenda;
+
         private decimal? percentualDesconto;
 
         private FlagTipoProduto flagTipoProduto = new FlagTipoProduto();
@@ -69,16 +73,90 @@ namespace ApiFarmaciaElvis.Entidades
         [Required(ErrorMessage = "Menor Preço é obrigatório.")]
         [Column("ULCH_MENOR_PRECO")]
         [Display(Name = "Menor Preço")]
-        public decimal? MenorPreco { get; set; }
+        public decimal? MenorPreco
+        {
+            get
+            {
+                return this.menorPreco;
+            }
+
+            set
+            {
+                decimal? menorPreco = value;
+
+                if (menorPreco != null && menorPreco <= 0)
+                {
+                    throw new ArgumentException("Menor Preço deve ser maior que zero.");
+                }
+                
+                decimal? percentualDesconto = this.percentualDesconto;
+
+                decimal? precoVenda = menorPreco;
+                if (menorPreco != null && percentualDesconto != null)
+                {
+                    precoVenda = (1 - percentualDesconto / 100) * menorPreco;
+                    precoVenda = decimal.Round(precoVenda.Value, 2);
+                }
+
+                this.menorPreco = menorPreco;
+                this.precoVenda = precoVenda;
+            }
+        }
 
         [Required(ErrorMessage = "Preço de Venda é obrigatório.")]
         [Column("ULCH_PRECO_VENDA")]
         [Display(Name = "Preço de Venda")]
-        public decimal? PrecoVenda { get; set; }
+        public decimal? PrecoVenda
+        {
+            get
+            {
+                return this.precoVenda;
+            }
+
+            private set
+            {
+                decimal? precoVenda = value;
+
+                if (precoVenda != null && precoVenda <= 0)
+                {
+                    throw new ArgumentException("Preço de Venda deve ser maior que zero.");
+                }
+
+                this.precoVenda = precoVenda;
+            }
+        }
                 
         [Column("ULCH_PERCENTUAL_DESCONTO")]
         [Display(Name = "Percentual de Desconto")]
-        public decimal? PercentualDesconto { get; set; }
+        public decimal? PercentualDesconto
+        {
+            get
+            {
+                return this.percentualDesconto;
+            }
+
+            set
+            {
+                decimal? percentualDesconto = value;
+
+                if (percentualDesconto != null && (percentualDesconto < 0 || percentualDesconto > 100))
+                {
+                    throw new ArgumentException("Percentual de Desconto deve estar entre 0 e 100.");
+                }
+
+                decimal? menorPreco = this.menorPreco;
+                decimal? precoVenda = menorPreco;
+
+                if (menorPreco != null && percentualDesconto != null)
+                {
+                    precoVenda = (1 - percentualDesconto / 100) * menorPreco;
+                    precoVenda = decimal.Round(precoVenda.Value, 2);
+                }
+
+                this.percentualDesconto = percentualDesconto;
+                this.precoVenda = precoVenda;
+            }
+        }
 
         [NotMapped]
         public FlagTipoProdutoEnum FlagTipoProdutoEnum
