@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ApiFarmaciaElvis.Entidades.DTOs
+﻿namespace ApiFarmaciaElvis.Entidades.DTOs
 {
-    public class QuantidadeVendidaPorProdutoDTO
+    public class VendaPorProdutoDTO
     {
         public int? CodigoProduto { get; set; }
         public int? Quantidade { get; set; }
 
-        public QuantidadeVendidaPorProdutoDTO()
+        public VendaPorProdutoDTO()
         {
 
         }
 
-        public QuantidadeVendidaPorProdutoDTO(int? codigoProduto, int? quantidade)
+        public VendaPorProdutoDTO(int? codigoProduto, int? quantidade)
         {
             this.CodigoProduto = codigoProduto;
             this.Quantidade = quantidade;
@@ -28,7 +24,7 @@ namespace ApiFarmaciaElvis.Entidades.DTOs
 
             if (obj.GetType() != this.GetType()) return false;
 
-            QuantidadeVendidaPorProdutoDTO other = (QuantidadeVendidaPorProdutoDTO)obj;
+            VendaPorProdutoDTO other = (VendaPorProdutoDTO)obj;
 
             return object.Equals(this.CodigoProduto, other.CodigoProduto) &&
                 object.Equals(this.Quantidade, other.Quantidade);

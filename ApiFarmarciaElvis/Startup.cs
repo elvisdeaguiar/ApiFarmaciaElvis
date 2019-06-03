@@ -11,11 +11,14 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using ApiFarmarciaElvis.Repositorios;
+using ApiFarmaciaElvis.Repositorios;
 
 namespace ApiFarmarciaElvis
 {
     public class Startup
     {
+        private const string NOME_CONTEXTO = "ApiFarmarciaElvisContext";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,7 +32,9 @@ namespace ApiFarmarciaElvis
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<ApiFarmarciaElvisContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ApiFarmarciaElvisContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString(NOME_CONTEXTO)));
+
+            services.AddTransient<IReportsService, ReportsService>(isp => new ReportsService(Configuration.GetConnectionString(NOME_CONTEXTO)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
