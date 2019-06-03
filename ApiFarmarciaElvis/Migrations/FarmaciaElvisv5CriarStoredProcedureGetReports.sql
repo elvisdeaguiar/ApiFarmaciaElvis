@@ -1,0 +1,43 @@
+USE FarmarciaElvis
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE GetReports 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+	  YEAR(uca.ULCH_DH_VENDA) AS Ano,
+	  MONTH(uca.ULCH_DH_VENDA) AS Mes,
+	  SUM(COALESCE(uca.ULCH_PRECO_VENDA, 0)) AS ValorVendido
+	FROM UltimaChanceAutorizacao uca
+	WHERE
+	  uca.ULCH_FL_SITUACAO = 'F'
+	GROUP BY YEAR(uca.ULCH_DH_VENDA), MONTH(uca.ULCH_DH_VENDA)
+	ORDER BY Ano DESC, Mes DESC;
+
+	SELECT
+	 uca.ULCH_FL_TIPO_PRODUTO AS Categoria,
+	 SUM(COALESCE(uca.ULCH_PRECO_VENDA, 0)) AS ValorVendido
+	FROM UltimaChanceAutorizacao uca
+	WHERE
+	  uca.ULCH_FL_SITUACAO = 'F'
+	GROUP BY uca.ULCH_FL_TIPO_PRODUTO
+	ORDER BY LEN(uca.ULCH_FL_TIPO_PRODUTO);
+
+	SELECT TOP 10
+	  uca.ULCH_SQ_PRODUTO AS CodigoProduto,
+	  COUNT(*) AS Quantidade
+	FROM UltimaChanceAutorizacao uca
+	WHERE
+	  uca.ULCH_FL_SITUACAO = 'F'
+	GROUP BY uca.ULCH_SQ_PRODUTO
+	ORDER BY Quantidade DESC;
+END
+GO
