@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ApiFarmaciaElvis.Entidades;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
