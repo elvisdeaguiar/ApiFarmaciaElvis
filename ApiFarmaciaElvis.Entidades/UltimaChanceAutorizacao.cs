@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiFarmaciaElvis.Entidades
-{
-    [Produces("application/json")]
+{   
     [Table("ULTIMA_CHANCE_AUTORIZACAO")]
     public class UltimaChanceAutorizacao
     {
