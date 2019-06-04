@@ -11,7 +11,7 @@ Public Class FrmPrincipal
     End Function
 
     Private Sub AssociarComponentesVisuaisComDados()
-        Throw New NotImplementedException()
+
     End Sub
 
     Private _VendasPorCategoria As List(Of VendaPorCategoriaDTO)
