@@ -17,6 +17,34 @@ Public Class FrmPrincipal
         Return System.Configuration.ConfigurationManager.ConnectionStrings(NOME_CONNECTION_STRING).ConnectionString
     End Function
 
+    Private Function ConverterCategoriaDeAbreviacaoParaExtenso(ByVal abreviacao As String) As String
+        If abreviacao = "M" Then
+            Return "Medicamento"
+        ElseIf abreviacao = "NM" Then
+            Return "Não-medicamento"
+        ElseIf abreviacao = "NMA" Then
+            Return "Não-medicamento alimento"
+        Else
+            Return abreviacao
+        End If
+    End Function
+
+    Private Sub TraduzirVendaPorCategoria(ByRef vendaPorCategoria As VendaPorCategoriaDTO)
+        If Not vendaPorCategoria Is Nothing Then
+            vendaPorCategoria.Categoria = ConverterCategoriaDeAbreviacaoParaExtenso(vendaPorCategoria.Categoria)
+        End If
+    End Sub
+
+    Private Sub TraduzirListaVendaPorCategoria(ByRef listaVendasPorCategoria As IList(Of VendaPorCategoriaDTO))
+        If Not listaVendasPorCategoria Is Nothing Then
+            For Each venda As VendaPorCategoriaDTO In listaVendasPorCategoria
+                If Not venda Is Nothing Then
+                    TraduzirVendaPorCategoria(venda)
+                End If
+            Next
+        End If
+    End Sub
+
     Private Function ConvertListToBindingSource(Of T)(ByRef lista As IList(Of T)) As BindingSource
         If lista Is Nothing Then
             lista = New List(Of T)()
@@ -40,6 +68,8 @@ Public Class FrmPrincipal
 
         If Not Reports Is Nothing Then
             Me.VendasPorCategoria = Reports.VendasPorCategoria
+            TraduzirListaVendaPorCategoria(Me.VendasPorCategoria)
+
             Me.VendasPorPeriodo = Reports.VendasPorPeriodo
             Me.VendasPorProduto = Reports.VendasPorProduto
 
