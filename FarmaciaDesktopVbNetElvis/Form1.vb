@@ -63,6 +63,10 @@ Public Class FrmPrincipal
         Me.ReportsService = New ReportsService(ConnectionString)
 
         AssociarComponentesVisuaisComDados()
+        'CarregarRelatorios()
+    End Sub
+
+    Private Sub BtnRecarregar_Click(sender As Object, e As EventArgs) Handles BtnRecarregar.Click
         CarregarRelatorios()
     End Sub
 End Class

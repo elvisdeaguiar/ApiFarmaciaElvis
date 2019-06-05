@@ -24,6 +24,8 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Me.PnlCarregarRelatorios = New System.Windows.Forms.Panel()
         Me.PnlReports = New System.Windows.Forms.Panel()
+        Me.BtnRecarregar = New System.Windows.Forms.Button()
+        Me.PnlCarregarRelatorios.SuspendLayout()
         Me.SuspendLayout()
         '
         'PnlCarregarRelatorios
@@ -31,9 +33,11 @@ Partial Class FrmPrincipal
         Me.PnlCarregarRelatorios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PnlCarregarRelatorios.Location = New System.Drawing.Point(0, 499)
+        Me.PnlCarregarRelatorios.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.PnlCarregarRelatorios.Controls.Add(Me.BtnRecarregar)
+        Me.PnlCarregarRelatorios.Location = New System.Drawing.Point(0, 502)
         Me.PnlCarregarRelatorios.Name = "PnlCarregarRelatorios"
-        Me.PnlCarregarRelatorios.Size = New System.Drawing.Size(785, 62)
+        Me.PnlCarregarRelatorios.Size = New System.Drawing.Size(785, 57)
         Me.PnlCarregarRelatorios.TabIndex = 0
         '
         'PnlReports
@@ -41,10 +45,20 @@ Partial Class FrmPrincipal
         Me.PnlReports.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PnlReports.Location = New System.Drawing.Point(0, 0)
+        Me.PnlReports.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.PnlReports.Location = New System.Drawing.Point(0, 1)
         Me.PnlReports.Name = "PnlReports"
         Me.PnlReports.Size = New System.Drawing.Size(785, 502)
         Me.PnlReports.TabIndex = 1
+        '
+        'BtnRecarregar
+        '
+        Me.BtnRecarregar.Location = New System.Drawing.Point(342, 17)
+        Me.BtnRecarregar.Name = "BtnRecarregar"
+        Me.BtnRecarregar.Size = New System.Drawing.Size(125, 23)
+        Me.BtnRecarregar.TabIndex = 0
+        Me.BtnRecarregar.Text = "Recarregar"
+        Me.BtnRecarregar.UseVisualStyleBackColor = True
         '
         'FrmPrincipal
         '
@@ -56,10 +70,12 @@ Partial Class FrmPrincipal
         Me.Name = "FrmPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Farmácia VB.NET Elvis"
+        Me.PnlCarregarRelatorios.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents PnlCarregarRelatorios As Panel
     Friend WithEvents PnlReports As Panel
+    Friend WithEvents BtnRecarregar As Button
 End Class
